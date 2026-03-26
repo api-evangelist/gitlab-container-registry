@@ -1,0 +1,28 @@
+aid: gitlab-container-registry
+name: GitLab Container Registry
+description: >-
+  GitLab Container Registry is a built-in container registry that allows users to store Docker images alongside their code in GitLab repositories.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Containers
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/gitlab-container-registry/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: gitlab-container-registry:gitlab-container-registry
+    name: GitLab Container Registry
+    description: >-
+      GitLab Container Registry is a built-in container registry that allows users to store Docker images alongside their code in GitLab repositories.
+    humanURL: https://docs.gitlab.com/user/packages/container_registry/
+    tags:
+      - Containers
+    properties: []
+common:
+  - type: Website
+    url: https://docs.gitlab.com/user/packages/container_registry/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
