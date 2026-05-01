@@ -1,0 +1,36 @@
+aid: gitlab-container-registry:capabilities
+name: GitLab Container Registry Capabilities
+description: Capabilities exposed by the GitLab Container Registry REST API.
+capabilities:
+  - name: List Project Repositories
+    description: Retrieve container registry repositories under a project.
+    method: GET
+    path: /projects/{id}/registry/repositories
+  - name: List Group Repositories
+    description: Retrieve container registry repositories under a group.
+    method: GET
+    path: /groups/{id}/registry/repositories
+  - name: Get Repository
+    description: Get details for a single registry repository.
+    method: GET
+    path: /registry/repositories/{id}
+  - name: Delete Repository
+    description: Delete a project registry repository.
+    method: DELETE
+    path: /projects/{id}/registry/repositories/{repository_id}
+  - name: List Repository Tags
+    description: List all tags within a repository.
+    method: GET
+    path: /projects/{id}/registry/repositories/{repository_id}/tags
+  - name: Get Repository Tag
+    description: Get details for a single tag.
+    method: GET
+    path: /projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}
+  - name: Delete Repository Tag
+    description: Delete a single tag.
+    method: DELETE
+    path: /projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}
+  - name: Bulk Delete Tags
+    description: Delete tags in bulk by regex and retention rules.
+    method: DELETE
+    path: /projects/{id}/registry/repositories/{repository_id}/tags

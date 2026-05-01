@@ -1,0 +1,16 @@
+aid: gitlab-container-registry:rules
+name: GitLab Container Registry Rules
+description: Operational rules and constraints for using the GitLab Container Registry API.
+rules:
+  - name: Authentication Required
+    description: All API calls require a PRIVATE-TOKEN header or OAuth2 bearer token.
+  - name: Permission Scopes
+    description: Operations require an access token with the api scope.
+  - name: Bulk Tag Deletion
+    description: Bulk tag deletion requires either name_regex_delete or keep_n combined with older_than parameters.
+  - name: Asynchronous Operations
+    description: Repository and bulk tag deletion operations are processed asynchronously and return 202 Accepted.
+  - name: Cleanup Policies
+    description: Cleanup policies can be configured per project to automatically expire tags.
+  - name: Rate Limits
+    description: GitLab.com applies rate limits to API calls; consult GitLab documentation for current limits.

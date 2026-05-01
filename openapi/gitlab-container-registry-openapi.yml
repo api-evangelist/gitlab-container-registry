@@ -1,0 +1,218 @@
+openapi: 3.0.3
+info:
+  title: GitLab Container Registry API
+  description: >-
+    REST API for the GitLab Container Registry, providing access to container
+    image repositories, tags, and registry metadata stored alongside GitLab projects.
+  version: 1.0.0
+  contact:
+    name: GitLab
+    url: https://docs.gitlab.com/api/container_registry/
+servers:
+  - url: https://gitlab.com/api/v4
+    description: GitLab.com API
+paths:
+  /registry/repositories/{id}:
+    get:
+      summary: Get details of a single repository
+      operationId: getRegistryRepository
+      tags:
+        - Repositories
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: tags
+          in: query
+          schema:
+            type: boolean
+        - name: tags_count
+          in: query
+          schema:
+            type: boolean
+        - name: size
+          in: query
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Repository details
+  /projects/{id}/registry/repositories:
+    get:
+      summary: List registry repositories within a project
+      operationId: listProjectRegistryRepositories
+      tags:
+        - Repositories
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of registry repositories
+  /groups/{id}/registry/repositories:
+    get:
+      summary: List registry repositories within a group
+      operationId: listGroupRegistryRepositories
+      tags:
+        - Repositories
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of registry repositories
+  /projects/{id}/registry/repositories/{repository_id}:
+    delete:
+      summary: Delete a registry repository
+      operationId: deleteProjectRegistryRepository
+      tags:
+        - Repositories
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repository_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '202':
+          description: Repository deletion scheduled
+  /projects/{id}/registry/repositories/{repository_id}/tags:
+    get:
+      summary: List tags for a repository
+      operationId: listRepositoryTags
+      tags:
+        - Tags
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repository_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of tags
+    delete:
+      summary: Delete repository tags in bulk
+      operationId: deleteRepositoryTagsBulk
+      tags:
+        - Tags
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repository_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: name_regex_delete
+          in: query
+          schema:
+            type: string
+        - name: name_regex_keep
+          in: query
+          schema:
+            type: string
+        - name: keep_n
+          in: query
+          schema:
+            type: integer
+        - name: older_than
+          in: query
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Bulk tag deletion scheduled
+  /projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}:
+    get:
+      summary: Get details of a single tag
+      operationId: getRepositoryTag
+      tags:
+        - Tags
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repository_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: tag_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tag details
+    delete:
+      summary: Delete a single tag
+      operationId: deleteRepositoryTag
+      tags:
+        - Tags
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: repository_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: tag_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tag deleted
+components:
+  securitySchemes:
+    PrivateToken:
+      type: apiKey
+      in: header
+      name: PRIVATE-TOKEN
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://gitlab.com/oauth/authorize
+          tokenUrl: https://gitlab.com/oauth/token
+          scopes:
+            api: Full API access
+security:
+  - PrivateToken: []
+  - OAuth2:
+      - api
+tags:
+  - name: Repositories
+    description: Container registry repositories
+  - name: Tags
+    description: Container image tags
