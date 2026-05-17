@@ -44,11 +44,11 @@ common:
     url: https://docs.gitlab.com/user/packages/container_registry/
   - type: API Documentation
     url: https://docs.gitlab.com/api/container_registry/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://gitlab.com/gitlab-org
   - type: Pricing
     url: https://about.gitlab.com/pricing/
-  - type: Status
+  - type: StatusPage
     url: https://status.gitlab.com/
 maintainers:
   - FN: Kin Lane
