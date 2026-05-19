@@ -1,0 +1,244 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: GitLab Container Registry API — Tags
+  description: 'GitLab Container Registry API — Tags. 4 operations. Lead operation: List tags for a repository. Self-contained
+    Naftiko capability covering one Gitlab Container Registry business surface.'
+  tags:
+  - Gitlab Container Registry
+  - Tags
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GITLAB_CONTAINER_REGISTRY_API_KEY: GITLAB_CONTAINER_REGISTRY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: gitlab-container-registry-tags
+    baseUri: https://gitlab.com/api/v4
+    description: GitLab Container Registry API — Tags business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-id-registry-repositories-repository_id-tags
+      path: /projects/{id}/registry/repositories/{repository_id}/tags
+      operations:
+      - name: listrepositorytags
+        method: GET
+        description: List tags for a repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: repository_id
+          in: path
+          type: integer
+          required: true
+      - name: deleterepositorytagsbulk
+        method: DELETE
+        description: Delete repository tags in bulk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: repository_id
+          in: path
+          type: integer
+          required: true
+        - name: name_regex_delete
+          in: query
+          type: string
+        - name: name_regex_keep
+          in: query
+          type: string
+        - name: keep_n
+          in: query
+          type: integer
+        - name: older_than
+          in: query
+          type: string
+    - name: projects-id-registry-repositories-repository_id-tags-tag_name
+      path: /projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}
+      operations:
+      - name: getrepositorytag
+        method: GET
+        description: Get details of a single tag
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: repository_id
+          in: path
+          type: integer
+          required: true
+        - name: tag_name
+          in: path
+          type: string
+          required: true
+      - name: deleterepositorytag
+        method: DELETE
+        description: Delete a single tag
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: repository_id
+          in: path
+          type: integer
+          required: true
+        - name: tag_name
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GITLAB_CONTAINER_REGISTRY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: gitlab-container-registry-tags-rest
+    port: 8080
+    description: REST adapter for GitLab Container Registry API — Tags. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{id}/registry/repositories/{repository-id}/tags
+      name: projects-id-registry-repositories-repository-id-tags
+      description: REST surface for projects-id-registry-repositories-repository_id-tags.
+      operations:
+      - method: GET
+        name: listrepositorytags
+        description: List tags for a repository
+        call: gitlab-container-registry-tags.listrepositorytags
+        with:
+          id: rest.id
+          repository_id: rest.repository_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleterepositorytagsbulk
+        description: Delete repository tags in bulk
+        call: gitlab-container-registry-tags.deleterepositorytagsbulk
+        with:
+          id: rest.id
+          repository_id: rest.repository_id
+          name_regex_delete: rest.name_regex_delete
+          name_regex_keep: rest.name_regex_keep
+          keep_n: rest.keep_n
+          older_than: rest.older_than
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{id}/registry/repositories/{repository-id}/tags/{tag-name}
+      name: projects-id-registry-repositories-repository-id-tags-tag-name
+      description: REST surface for projects-id-registry-repositories-repository_id-tags-tag_name.
+      operations:
+      - method: GET
+        name: getrepositorytag
+        description: Get details of a single tag
+        call: gitlab-container-registry-tags.getrepositorytag
+        with:
+          id: rest.id
+          repository_id: rest.repository_id
+          tag_name: rest.tag_name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleterepositorytag
+        description: Delete a single tag
+        call: gitlab-container-registry-tags.deleterepositorytag
+        with:
+          id: rest.id
+          repository_id: rest.repository_id
+          tag_name: rest.tag_name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: gitlab-container-registry-tags-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for GitLab Container Registry API — Tags. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-tags-repository
+      description: List tags for a repository
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gitlab-container-registry-tags.listrepositorytags
+      with:
+        id: tools.id
+        repository_id: tools.repository_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-repository-tags-bulk
+      description: Delete repository tags in bulk
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: gitlab-container-registry-tags.deleterepositorytagsbulk
+      with:
+        id: tools.id
+        repository_id: tools.repository_id
+        name_regex_delete: tools.name_regex_delete
+        name_regex_keep: tools.name_regex_keep
+        keep_n: tools.keep_n
+        older_than: tools.older_than
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-single-tag
+      description: Get details of a single tag
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gitlab-container-registry-tags.getrepositorytag
+      with:
+        id: tools.id
+        repository_id: tools.repository_id
+        tag_name: tools.tag_name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-single-tag
+      description: Delete a single tag
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: gitlab-container-registry-tags.deleterepositorytag
+      with:
+        id: tools.id
+        repository_id: tools.repository_id
+        tag_name: tools.tag_name
+      outputParameters:
+      - type: object
+        mapping: $.

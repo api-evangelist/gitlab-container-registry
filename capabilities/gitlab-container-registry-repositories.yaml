@@ -1,0 +1,223 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: GitLab Container Registry API — Repositories
+  description: 'GitLab Container Registry API — Repositories. 4 operations. Lead operation: List registry repositories within
+    a group. Self-contained Naftiko capability covering one Gitlab Container Registry business surface.'
+  tags:
+  - Gitlab Container Registry
+  - Repositories
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GITLAB_CONTAINER_REGISTRY_API_KEY: GITLAB_CONTAINER_REGISTRY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: gitlab-container-registry-repositories
+    baseUri: https://gitlab.com/api/v4
+    description: GitLab Container Registry API — Repositories business capability. Self-contained, no shared references.
+    resources:
+    - name: groups-id-registry-repositories
+      path: /groups/{id}/registry/repositories
+      operations:
+      - name: listgroupregistryrepositories
+        method: GET
+        description: List registry repositories within a group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: projects-id-registry-repositories
+      path: /projects/{id}/registry/repositories
+      operations:
+      - name: listprojectregistryrepositories
+        method: GET
+        description: List registry repositories within a project
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: projects-id-registry-repositories-repository_id
+      path: /projects/{id}/registry/repositories/{repository_id}
+      operations:
+      - name: deleteprojectregistryrepository
+        method: DELETE
+        description: Delete a registry repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: repository_id
+          in: path
+          type: integer
+          required: true
+    - name: registry-repositories-id
+      path: /registry/repositories/{id}
+      operations:
+      - name: getregistryrepository
+        method: GET
+        description: Get details of a single repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        - name: tags
+          in: query
+          type: boolean
+        - name: tags_count
+          in: query
+          type: boolean
+        - name: size
+          in: query
+          type: boolean
+    authentication:
+      type: bearer
+      token: '{{env.GITLAB_CONTAINER_REGISTRY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: gitlab-container-registry-repositories-rest
+    port: 8080
+    description: REST adapter for GitLab Container Registry API — Repositories. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/groups/{id}/registry/repositories
+      name: groups-id-registry-repositories
+      description: REST surface for groups-id-registry-repositories.
+      operations:
+      - method: GET
+        name: listgroupregistryrepositories
+        description: List registry repositories within a group
+        call: gitlab-container-registry-repositories.listgroupregistryrepositories
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{id}/registry/repositories
+      name: projects-id-registry-repositories
+      description: REST surface for projects-id-registry-repositories.
+      operations:
+      - method: GET
+        name: listprojectregistryrepositories
+        description: List registry repositories within a project
+        call: gitlab-container-registry-repositories.listprojectregistryrepositories
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{id}/registry/repositories/{repository-id}
+      name: projects-id-registry-repositories-repository-id
+      description: REST surface for projects-id-registry-repositories-repository_id.
+      operations:
+      - method: DELETE
+        name: deleteprojectregistryrepository
+        description: Delete a registry repository
+        call: gitlab-container-registry-repositories.deleteprojectregistryrepository
+        with:
+          id: rest.id
+          repository_id: rest.repository_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/registry/repositories/{id}
+      name: registry-repositories-id
+      description: REST surface for registry-repositories-id.
+      operations:
+      - method: GET
+        name: getregistryrepository
+        description: Get details of a single repository
+        call: gitlab-container-registry-repositories.getregistryrepository
+        with:
+          id: rest.id
+          tags: rest.tags
+          tags_count: rest.tags_count
+          size: rest.size
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: gitlab-container-registry-repositories-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for GitLab Container Registry API — Repositories. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-registry-repositories-within-group
+      description: List registry repositories within a group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gitlab-container-registry-repositories.listgroupregistryrepositories
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-registry-repositories-within-project
+      description: List registry repositories within a project
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gitlab-container-registry-repositories.listprojectregistryrepositories
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-registry-repository
+      description: Delete a registry repository
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: gitlab-container-registry-repositories.deleteprojectregistryrepository
+      with:
+        id: tools.id
+        repository_id: tools.repository_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-details-single-repository
+      description: Get details of a single repository
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gitlab-container-registry-repositories.getregistryrepository
+      with:
+        id: tools.id
+        tags: tools.tags
+        tags_count: tools.tags_count
+        size: tools.size
+      outputParameters:
+      - type: object
+        mapping: $.
