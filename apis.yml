@@ -53,6 +53,8 @@ common:
   url: https://about.gitlab.com/pricing/
 - type: StatusPage
   url: https://status.gitlab.com/
+- type: LLMsTxt
+  url: https://docs.gitlab.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
