@@ -1,0 +1,248 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GitLab Container Registry API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "PRIVATE-TOKEN",
+      "value": "{{PRIVATE-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repositories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get details of a single repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gitlab.com/api/v4/registry/repositories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tags_count",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get details of a single repository"
+        },
+        {
+          "info": {
+            "name": "List registry repositories within a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gitlab.com/api/v4/projects/:id/registry/repositories",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List registry repositories within a project"
+        },
+        {
+          "info": {
+            "name": "List registry repositories within a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gitlab.com/api/v4/groups/:id/registry/repositories",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List registry repositories within a group"
+        },
+        {
+          "info": {
+            "name": "Delete a registry repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://gitlab.com/api/v4/projects/:id/registry/repositories/:repository_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a registry repository"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tags for a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gitlab.com/api/v4/projects/:id/registry/repositories/:repository_id/tags",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List tags for a repository"
+        },
+        {
+          "info": {
+            "name": "Delete repository tags in bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://gitlab.com/api/v4/projects/:id/registry/repositories/:repository_id/tags",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name_regex_delete",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name_regex_keep",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keep_n",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "older_than",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete repository tags in bulk"
+        },
+        {
+          "info": {
+            "name": "Get details of a single tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gitlab.com/api/v4/projects/:id/registry/repositories/:repository_id/tags/:tag_name",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tag_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get details of a single tag"
+        },
+        {
+          "info": {
+            "name": "Delete a single tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://gitlab.com/api/v4/projects/:id/registry/repositories/:repository_id/tags/:tag_name",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tag_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a single tag"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
