@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://trust.gitlab.com/
+url: https://trust.gitlab.com/
+certifications:
+- SOC 2
+- ISO 27001
+- ISO 27017
+- ISO 27018
+- PCI DSS
+- GDPR
+- CSA STAR
+evidence:
+- source: https://trust.gitlab.com/
+  keywords:
+  - soc 2
+  - iso/iec 27001
+  - pci dss
+  - trust center
+  - gdpr
+  - csa star
