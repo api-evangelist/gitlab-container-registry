@@ -42,6 +42,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/gitlab-container-registry/refs/heads/main/rules/gitlab-container-registry-rules.yml
 common:
+  - type: OAuthScopes
+    url: scopes/gitlab-container-registry-scopes.yml
   - type: Website
     url: https://docs.gitlab.com/user/packages/container_registry/
   - type: Documentation
@@ -56,6 +58,8 @@ common:
     url: https://status.gitlab.com/
   - type: LlmsText
     url: https://docs.gitlab.com/llms.txt
+  - type: Blog
+    url: https://about.gitlab.com/atom.xml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

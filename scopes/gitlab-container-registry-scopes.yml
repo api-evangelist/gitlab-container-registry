@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/gitlab-container-registry-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/gitlab-container-registry-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://gitlab.com/oauth/authorize
+    tokenUrl: https://gitlab.com/oauth/token
+scopes:
+- scope: api
+  description: Full API access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/gitlab-container-registry-openapi.yml
