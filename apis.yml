@@ -42,6 +42,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/gitlab-container-registry/refs/heads/main/rules/gitlab-container-registry-rules.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/gitlab-container-registry-agentic-access.yml
   - type: TrustCenter
     url: security/gitlab-container-registry-trust-center.yml
   - type: VulnerabilityDisclosure

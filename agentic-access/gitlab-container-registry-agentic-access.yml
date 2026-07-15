@@ -1,0 +1,130 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/gitlab-container-registry-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 8
+  by_action_class:
+    connected: 5
+    acting: 3
+  by_consequence:
+    read: 5
+    write: 3
+  human_in_the_loop_required: 0
+operations:
+- path: /registry/repositories/{id}
+  method: get
+  operationId: getRegistryRepository
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - api
+- path: /projects/{id}/registry/repositories
+  method: get
+  operationId: listProjectRegistryRepositories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - api
+- path: /groups/{id}/registry/repositories
+  method: get
+  operationId: listGroupRegistryRepositories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - api
+- path: /projects/{id}/registry/repositories/{repository_id}
+  method: delete
+  operationId: deleteProjectRegistryRepository
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - api
+- path: /projects/{id}/registry/repositories/{repository_id}/tags
+  method: get
+  operationId: listRepositoryTags
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - api
+- path: /projects/{id}/registry/repositories/{repository_id}/tags
+  method: delete
+  operationId: deleteRepositoryTagsBulk
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - api
+- path: /projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}
+  method: get
+  operationId: getRepositoryTag
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - api
+- path: /projects/{id}/registry/repositories/{repository_id}/tags/{tag_name}
+  method: delete
+  operationId: deleteRepositoryTag
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - api
