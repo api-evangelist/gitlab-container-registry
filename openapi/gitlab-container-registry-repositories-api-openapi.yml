@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: GitLab Container Registry Repositories API
+  description: REST API for the GitLab Container Registry, providing access to container image repositories, tags, and registry metadata stored alongside GitLab projects.
+  version: 1.0.0
+  contact:
+    name: GitLab
+    url: https://docs.gitlab.com/api/container_registry/
+servers:
+- url: https://gitlab.com/api/v4
+  description: GitLab.com API
+security:
+- PrivateToken: []
+- OAuth2:
+  - api
+tags:
+- name: Repositories
+  description: Container registry repositories
+paths:
+  /registry/repositories/{id}:
+    get:
+      summary: Get details of a single repository
+      operationId: getRegistryRepository
+      tags:
+      - Repositories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: tags
+        in: query
+        schema:
+          type: boolean
+      - name: tags_count
+        in: query
+        schema:
+          type: boolean
+      - name: size
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Repository details
+  /projects/{id}/registry/repositories:
+    get:
+      summary: List registry repositories within a project
+      operationId: listProjectRegistryRepositories
+      tags:
+      - Repositories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of registry repositories
+  /groups/{id}/registry/repositories:
+    get:
+      summary: List registry repositories within a group
+      operationId: listGroupRegistryRepositories
+      tags:
+      - Repositories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of registry repositories
+  /projects/{id}/registry/repositories/{repository_id}:
+    delete:
+      summary: Delete a registry repository
+      operationId: deleteProjectRegistryRepository
+      tags:
+      - Repositories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '202':
+          description: Repository deletion scheduled
+components:
+  securitySchemes:
+    PrivateToken:
+      type: apiKey
+      in: header
+      name: PRIVATE-TOKEN
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://gitlab.com/oauth/authorize
+          tokenUrl: https://gitlab.com/oauth/token
+          scopes:
+            api: Full API access
