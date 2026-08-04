@@ -1,0 +1,16 @@
+{
+  "provider": "gitlab-container-registry",
+  "sources": [
+    "gitlab-container-registry-repositories-api-openapi.yml",
+    "gitlab-container-registry-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "gitlab-container-registry-repositories-api-openapi.yml",
+    "gitlab-container-registry-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
