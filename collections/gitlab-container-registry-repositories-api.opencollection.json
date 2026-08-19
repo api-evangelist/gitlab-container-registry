@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GitLab Container Registry Repositories API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "PRIVATE-TOKEN",
+      "value": "{{PRIVATE-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repositories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get details of a single repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gitlab.com/api/v4/registry/repositories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tags_count",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get details of a single repository"
+        },
+        {
+          "info": {
+            "name": "List registry repositories within a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gitlab.com/api/v4/projects/:id/registry/repositories",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List registry repositories within a project"
+        },
+        {
+          "info": {
+            "name": "List registry repositories within a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://gitlab.com/api/v4/groups/:id/registry/repositories",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List registry repositories within a group"
+        },
+        {
+          "info": {
+            "name": "Delete a registry repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://gitlab.com/api/v4/projects/:id/registry/repositories/:repository_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a registry repository"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
