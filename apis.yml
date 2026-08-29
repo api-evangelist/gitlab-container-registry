@@ -4,6 +4,18 @@ description: >-
   GitLab Container Registry is a built-in container registry that allows users to store Docker images alongside their
   code in GitLab repositories. It exposes a REST API for managing image repositories, tags, and cleanup policies.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
