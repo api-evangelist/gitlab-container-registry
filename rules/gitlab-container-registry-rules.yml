@@ -1,5 +1,5 @@
-aid: gitlab-container-registry:rules
-name: GitLab Container Registry Rules
+x-aid: gitlab-container-registry:rules
+x-name: GitLab Container Registry Rules
 description: Operational rules and constraints for using the GitLab Container Registry API.
 rules:
   - name: Authentication Required
