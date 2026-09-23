@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: GitLab Container Registry Repositories Tags API
+  title: GitLab Container Registry Tags API
   description: REST API for the GitLab Container Registry, providing access to container image repositories, tags, and registry metadata stored alongside GitLab projects.
   version: 1.0.0
   contact:

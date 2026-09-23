@@ -1,8 +1,7 @@
 {
   "provider": "gitlab-container-registry",
   "sources": [
-    "gitlab-container-registry-repositories-api-openapi.yml",
-    "gitlab-container-registry-tags-api-openapi.yml"
+    "_original/gitlab-container-registry-openapi.yml"
   ],
   "outputs": [
     "gitlab-container-registry-repositories-api-openapi.yml",
@@ -12,9 +11,12 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "gitlab-container-registry-repositories-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "gitlab-container-registry-tags-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "gitlab-container-registry-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "gitlab-container-registry-repositories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gitlab-container-registry-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
