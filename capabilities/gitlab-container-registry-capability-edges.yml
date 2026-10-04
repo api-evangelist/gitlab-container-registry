@@ -1,0 +1,26 @@
+slug: gitlab-container-registry
+provider: GitLab Container Registry
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Repositories
+  spec_file: gitlab-container-registry-repositories-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.7
+  evidence: GET /projects/{id}/registry/repositories  listProjectRegistryRepositories  List registry repositories
+    within a project
+  reason: These are container image repositories in a build artefact registry, not source repositories
+    — artefact production and storage sits under Continuous Integration Management. Homograph risk with
+    source control noted; confidence moderate.
