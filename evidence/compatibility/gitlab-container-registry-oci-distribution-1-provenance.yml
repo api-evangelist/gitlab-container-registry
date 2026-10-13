@@ -1,0 +1,13 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://docs.gitlab.com/user/packages/container_registry/
+page: https://docs.gitlab.com/user/packages/container_registry/
+file: gitlab-container-registry-oci-distribution-1.md
+bytes: 12624
+sha256: fa9ea77cc5d1ad15e48183fa2b4959ba1d9862bc0d213cdbd544ca0ad7064223
+anchor: open-container-initiative
+shape: oci-distribution
+classification: declares-compatibility
+quote: The container registry supports the Docker V2 and Open Container Initiative (OCI) image formats. Additionally,
+  the container registry conforms to the OCI distribution specification .
+note: text extracted from the provider's own page (tags stripped), saved for evidence
