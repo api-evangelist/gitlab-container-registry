@@ -1,4 +1,4 @@
-# GitLab Container Registry (gitlab-container-registry)
+# GitLab Container Registry
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,61 +66,134 @@
 
 GitLab Container Registry is a built-in container registry that allows users to store Docker images alongside their code in GitLab repositories. It exposes a REST API for managing image repositories, tags, and cleanup policies.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/gitlab-container-registry/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/gitlab-container-registry/refs/heads/main/apis.yml)
+**Areas:** Container Images · Containers · GitLab · Registry
 
-## Scope
+## GitLab Container Registry on APIs.io
 
-- **Type:** Index
+Everything profiled for GitLab Container Registry is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/gitlab-container-registry/](https://apis.io/providers/gitlab-container-registry/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (2)
 
-- Container Images
-- Containers
-- GitLab
-- Registry
+- [GitLab Container Registry Repositories API](https://apis.io/apis/gitlab-container-registry/gitlab-container-registry-repositories-api/) — Container registry repositories
+- [GitLab Container Registry Tags API](https://apis.io/apis/gitlab-container-registry/gitlab-container-registry-tags-api/) — Container image tags
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-26
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### GitLab Container Registry
+Which operations an agent can call, which act, and which need a human in the loop.
 
-GitLab Container Registry is a built-in container registry that allows users to store Docker images alongside their code in GitLab repositories.
+- [Gitlab Container Registry Agentic Access](https://apis.io/agentic-access/gitlab-container-registry/gitlab-container-registry-agentic-access/)
 
-- **Human URL:** [https://docs.gitlab.com/user/packages/container_registry/](https://docs.gitlab.com/user/packages/container_registry/)
-- **Base URL:** `https://gitlab.com/api/v4`
+#### Collections (3)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Container Images
-- Containers
-- GitLab
-- Registry
+- [GitLab Container Registry API](https://apis.io/collections/gitlab-container-registry/open-gitlab-container-registry/)
+- [GitLab Container Registry Repositories API](https://apis.io/collections/gitlab-container-registry/open-gitlab-container-registry-repositories-api/)
+- [GitLab Container Registry Repositories Tags API](https://apis.io/collections/gitlab-container-registry/open-gitlab-container-registry-tags-api/)
 
-#### Properties
+#### Governance rules (1)
 
-- [Documentation](https://docs.gitlab.com/user/packages/container_registry/)
-- [A P I  Documentation](https://docs.gitlab.com/api/container_registry/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/gitlab-container-registry/refs/heads/main/openapi/gitlab-container-registry-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Capabilities](https://raw.githubusercontent.com/api-evangelist/gitlab-container-registry/refs/heads/main/capabilities/gitlab-container-registry-capabilities.yml)
-- [Rules](https://raw.githubusercontent.com/api-evangelist/gitlab-container-registry/refs/heads/main/rules/gitlab-container-registry-rules.yml)
-- [Postman Collection](collections/gitlab-container-registry.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/gitlab-container-registry.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Spectral rulesets for the provider's contracts.
 
-## Common Properties
+- [GitLab Container Registry API Rules](https://apis.io/rules/gitlab-container-registry/gitlab-container-registry-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Gitlab Container Registry Authentication](https://apis.io/security/gitlab-container-registry/gitlab-container-registry-authentication/)
+- [Gitlab Container Registry Domain Security](https://apis.io/security/gitlab-container-registry/gitlab-container-registry-domain-security/)
+- [Gitlab Container Registry Trust Center](https://apis.io/security/gitlab-container-registry/gitlab-container-registry-trust-center/)
+- [Gitlab Container Registry Vulnerability Disclosure](https://apis.io/security/gitlab-container-registry/gitlab-container-registry-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Gitlab Container Registry Scopes](https://apis.io/scopes/gitlab-container-registry/gitlab-container-registry-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Gitlab Container Registry Plans Pricing](https://apis.io/plans/gitlab-container-registry/gitlab-container-registry-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Gitlab Container Registry Rate Limits](https://apis.io/rate-limits/gitlab-container-registry/gitlab-container-registry-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Gitlab Container Registry Finops](https://apis.io/finops/gitlab-container-registry/gitlab-container-registry-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://docs.gitlab.com/user/packages/container_registry/)
 - [Documentation](https://docs.gitlab.com/user/packages/container_registry/)
-- [A P I  Documentation](https://docs.gitlab.com/api/container_registry/)
-- [GitHub Organization](https://gitlab.com/gitlab-org)
 - [Pricing](https://about.gitlab.com/pricing/)
-- [Status Page](https://status.gitlab.com/)
-- [L L Ms Txt](https://docs.gitlab.com/llms.txt)
+- [Blog](https://about.gitlab.com/atom.xml)
+- [GitHub](https://gitlab.com/gitlab-org)
+- [Status](https://status.gitlab.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 34.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 44.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 26.3 |
+
+**Agent readiness 20.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 32.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/gitlab-container-registry/](https://apis.io/providers/gitlab-container-registry/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for GitLab Container Registry: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/gitlab-container-registry/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
